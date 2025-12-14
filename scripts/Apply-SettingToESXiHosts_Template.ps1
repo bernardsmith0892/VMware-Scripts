@@ -5,6 +5,9 @@ A template script to run a command on multiple ESXi hosts.
 .PARAMETER VmHosts
 Specifies the ESXi hosts to run the command on.
 
+.PARAMETER InitialDelay
+Specifies the initial delay (in seconds) before checking on a host's status after rebooting.
+
 .EXAMPLE
 Connect-VIServer -Server vcenter.sddc.lab
 Get-VMHost | ./Apply-SettingToESXiHosts_Template.ps1
@@ -17,7 +20,8 @@ $vmHosts = Get-VMHost
 
 param (
     [Parameter(ValueFromPipeline)]
-    [PSObject[]] $VmHosts
+    [PSObject[]] $VmHosts,
+    [int] $InitialDelay = 300
 )
 
 # ***********************************************************************************
@@ -52,7 +56,7 @@ process {
 
         # Wait for host to come back online
         Write-Information "  Waiting for $($vmHost.Name) to come back online..."
-        Start-Sleep -Seconds 300 
+        Start-Sleep -Seconds $InitialDelay 
         do {
             Start-Sleep -Seconds 15
             $vmHostStatus = Get-VMHost -Name $vmHost.Name

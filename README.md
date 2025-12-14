@@ -6,7 +6,7 @@ A miscellaneous list of useful scripts I've developed for tasks in VMware Cloud 
 
 ### [Apply-SettingToESXiHosts_Template.ps1](scripts/Apply-SettingToESXiHosts_Template.ps1)
 
-A template script. Useful if you need to run a set of commands on multiple ESXi hosts which requires a reboot after execution. Places a host into maintenance mode, runs the command, reboots the host, takes the host out of maintenance mode, and then moves on to the next host.
+A template script -- useful if you need to run a set of commands on multiple ESXi hosts which requires a reboot after execution. Places a host into maintenance mode, runs the command, reboots the host, takes the host out of maintenance mode, and then moves on to the next host. Insert your code into the commented area, add a reason in the host shutdown command, and execute the cmdlet.
 
 ### [Get-CDPInfo.ps1](scripts/Get-CDPInfo.ps1)
 
