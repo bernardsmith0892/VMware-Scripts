@@ -39,3 +39,14 @@ Shows the two REST calls needed to clear an SMTP configuration in vIDM. You're n
 ### [Get-AriaAutoApiToken.ps1](scripts/Get-AriaAutoApiToken.ps1)
 
 Logs into Aria Automation and returns the bearer token used for future REST API calls.
+
+## Miscellaneous
+
+### [Get-iDracSecureBootSettings.ps1](scripts/Get-iDracSecureBootSettings.ps1)
+
+Retrieves the secure boot settings for a list of Dell hosts through the iDRAC Redfish API.
+
+### [Change-iDracRootPasswords.ps1](scripts/Change-iDracRootPasswords.ps1)
+
+Perform a mass root password change for a list of Dell hosts through the iDRAC Redfish API.
+
