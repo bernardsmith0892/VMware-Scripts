@@ -58,7 +58,7 @@ foreach ($policy in $policiesRequest.results) {
     $import_block = @"
 import {
     to = nsxt_policy_security_policy.$policyCleanName
-    id = $DomainId/$($policy.id)
+    id = "$DomainId/$($policy.id)"
 }
 "@
 
@@ -87,7 +87,7 @@ foreach ($group in $groupsRequest.results) {
     $import_block = @"
 import {
     to = nsxt_policy_group.$groupCleanName
-    id = $DomainId/$($group.id)
+    id = "$DomainId/$($group.id)"
 }
 "@
     if ([string]::IsNullOrEmpty($OutFile)) {
