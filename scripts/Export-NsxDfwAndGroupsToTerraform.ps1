@@ -42,10 +42,10 @@ param (
 )
 
 if ([string]::IsNullOrEmpty($OutFile)) {
-    Write-Output "*** DFW Policies ***"   
+    Write-Output "# *** DFW Policies ***"   
 }
 else {
-    Out-File -FilePath $OutFile -InputObject "*** DFW Policies ***"   
+    Out-File -FilePath $OutFile -InputObject "# *** DFW Policies ***"   
 }
 
 $policiesRequest = Invoke-RestMethod -ErrorAction Stop -Credential $AdminCreds -Authentication Basic -Method Get -Uri "https://$NsxFqdn/policy/api/v1/infra/domains/$DomainId/security-policies" -SkipCertificateCheck:$SkipCertificateCheck
@@ -71,10 +71,10 @@ import {
 }
 
 if ([string]::IsNullOrEmpty($OutFile)) {
-    Write-Output "*** Group Policies ***"   
+    Write-Output "# *** Group Policies ***"   
 }
 else {
-    Out-File -FilePath $OutFile -Append -InputObject "*** Group Policies ***"   
+    Out-File -FilePath $OutFile -Append -InputObject "# *** Group Policies ***"   
 }
 $groupsRequest = Invoke-RestMethod -ErrorAction Stop -Credential $AdminCreds -Authentication Basic -Method Get -Uri "https://$NsxFqdn/policy/api/v1/infra/domains/$DomainId/groups" -SkipCertificateCheck:$SkipCertificateCheck
 foreach ($group in $groupsRequest.results) {
