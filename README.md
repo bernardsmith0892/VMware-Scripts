@@ -26,6 +26,10 @@ Clears stale realized IP address bindings for all segment ports in an NSX segmen
 
 Retrieves the enhanced datapath flow table statistics for all ESXi hosts managed by NSX.
 
+### [Export-NsxDfwAndGroupsToTerraform.ps1](scripts/Export-NsxDfwAndGroupsToTerraform.ps1)
+
+Retrieves DFW rules and security groups for a domain in NSX and outputs them as Terraform import blocks.
+
 ## Aria Suite
 
 ### [Change-OpsForLogsAlertRecipients.ps1](scripts/Change-OpsForLogsAlertRecipients.ps1)
