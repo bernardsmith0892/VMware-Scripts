@@ -20,7 +20,7 @@ Specifies the admin credentials used to log into NSX. By default, it prompts the
 .PARAMETER ShowSystemPolicies
 (Optional) Select if you also want to include system/pre-generated DFW policies. (Default = False)
 
-.PARAMETER ShowSystemPolicies
+.PARAMETER ShowSystemGroups
 (Optional) Select if you also want to include system/pre-generated security groups. (Default = False)
 
 .PARAMETER SkipCertificateCheck
