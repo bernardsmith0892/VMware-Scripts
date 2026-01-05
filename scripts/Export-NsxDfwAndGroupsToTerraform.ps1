@@ -27,7 +27,7 @@ Specifies the admin credentials used to log into NSX. By default, it prompts the
 (Optional) Select if you want to skip the certificate check for the NSX REST API calls (Default = False)
 
 .EXAMPLE
-./Export-NsxDfwAndGroupsToTerraform.psq -NsxFqdn nsx.sddc.lab > imports.tf
+./Export-NsxDfwAndGroupsToTerraform.psq -NsxFqdn nsx.sddc.lab -OutFile import.tf
 #>
 
 param (
@@ -41,7 +41,7 @@ param (
     [switch] $SkipCertificateCheck
 )
 
-if ($null -eq $OutFile) {
+if ([string]::IsNullOrEmpty($OutFile)) {
     Write-Output "*** DFW Policies ***"   
 }
 else {
@@ -62,7 +62,7 @@ import {
 }
 "@
 
-    if ($null -eq $OutFile) {
+    if ([string]::IsNullOrEmpty($OutFile)) {
         Write-Output $import_block
     }
     else {
@@ -84,7 +84,7 @@ import {
     id = $DomainId/$($group.id)
 }
 "@
-    if ($null -eq $OutFile) {
+    if ([string]::IsNullOrEmpty($OutFile)) {
         Write-Output $import_block
     }
     else {
