@@ -45,7 +45,7 @@ if ([string]::IsNullOrEmpty($OutFile)) {
     Write-Output "*** DFW Policies ***"   
 }
 else {
-    Out-File -FilePath $OutFile "*** DFW Policies ***"   
+    Out-File -FilePath $OutFile -InputObject "*** DFW Policies ***"   
 }
 
 $policiesRequest = Invoke-RestMethod -ErrorAction Stop -Credential $AdminCreds -Authentication Basic -Method Get -Uri "https://$NsxFqdn/policy/api/v1/infra/domains/$DomainId/security-policies" -SkipCertificateCheck:$SkipCertificateCheck
@@ -66,10 +66,16 @@ import {
         Write-Output $import_block
     }
     else {
-        Out-File -FilePath $OutFile -Append $import_block
+        Out-File -FilePath $OutFile -Append -InputObject $import_block
     }
 }
 
+if ([string]::IsNullOrEmpty($OutFile)) {
+    Write-Output "*** Group Policies ***"   
+}
+else {
+    Out-File -FilePath $OutFile -Append -InputObject "*** Group Policies ***"   
+}
 $groupsRequest = Invoke-RestMethod -ErrorAction Stop -Credential $AdminCreds -Authentication Basic -Method Get -Uri "https://$NsxFqdn/policy/api/v1/infra/domains/$DomainId/groups" -SkipCertificateCheck:$SkipCertificateCheck
 foreach ($group in $groupsRequest.results) {
     if (-not $ShowSystemGroups -and $group._create_user -eq "system"){
@@ -88,6 +94,6 @@ import {
         Write-Output $import_block
     }
     else {
-        Out-File -FilePath $OutFile -Append $import_block
+        Out-File -FilePath $OutFile -Append -InputObject $import_block
     }
 }
